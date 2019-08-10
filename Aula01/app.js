@@ -19,7 +19,7 @@ app.use('/inverte/:string', (req, res) => {
 
     //Inverte a String
     string = string.split('').reverse().join('');
-    res.json(string);
+    res.json({ resultado: string });
 
 });
 
@@ -29,25 +29,21 @@ app.use('/cpf/:cpf', (req, res) => {
     let resto;
     soma = 0;
     //cpf com valores iguais 
-  if (cpf == "00000000000") res.send(false);
+  if (cpf == "00000000000") res.json({valido: false});
 
   for (i=1; i<=9; i++) soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
   resto = (soma * 10) % 11;
    
     if ((resto == 10) || (resto == 11))  resto = 0;
-    if (resto != parseInt(cpf.substring(9, 10)) ) res.send(false);
+    if (resto != parseInt(cpf.substring(9, 10)) ) res.json({valido: false});
    
     soma = 0;
     for (i = 1; i <= 10; i++) soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
     resto = (soma * 10) % 11;
    
     if ((resto == 10) || (resto == 11))  resto = 0;
-    if (resto != parseInt(cpf.substring(10, 11) ) ) res.send(false);
-    res.send(true);
+    if (resto != parseInt(cpf.substring(10, 11) ) ) res.json({valido: false});
+    res.json({valido: true});
      
 });
-
-
-app.listen(3000,
-    ()=> console.log('Servidor Iniciado . . .')
-);
+module.exports = app

@@ -16,8 +16,7 @@ const conexao = new Sequelize(
     }   
 );
 
-//Voce precisa iniciar todos os modelos antes da sicronizacao que ocorre abaixo
-//para poder mapear para uma tabela
+
 const Trabalho = TrabalhoModel(conexao, Sequelize); 
 const Item = ItemModel(conexao, Sequelize);
 

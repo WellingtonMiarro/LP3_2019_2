@@ -1,12 +1,12 @@
 
-//este import é exemplo de Associação por desestruturação
+
 const {Op} = require('sequelize');
 const { Trabalho, Item } = require('../databases/db');
 
 const controller = {
-    // Arrow Function
+   
     recuperarTodas: async(req, res) =>  {
-      //findAll recupera tudo 
+      
       const trabalhos = await Trabalho.findAll();
       return res.json(trabalhos);
     },

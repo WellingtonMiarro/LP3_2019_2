@@ -1,21 +1,21 @@
-const Lista = require ('../models/Lista');
-let listas = [];
+const Lista = require('../models/Lista');
+
 const controller = {
-    // Arrow Function
-    recuperarTodas: (req, res) =>  res.json(listas),
     salvar: (req, res) => {
-       const nome = req.body.nome;
+       const { nome } = req.body;
 
-       //Verifica se foi informado o nome da lista
-
-       //SEMPRE RESPONDER COM RESPOSTA ADEQUADA
        if(nome){
-          let lista = new Lista(nome);
-          listas.push(lista);
-          res.status(201).json(lista);
-       }
-       else{
-        res.status(400).json({mensagemErro:'Nome da Lista não Informado!!!'});
+          const lista = req.body;
+          Lista
+          .create(lista)
+          .then(listaSalva => res.status(201).json(listaSalva))
+          .catch(erro =>{
+             console.log(erro);
+             res.status(500).json({mensagem:'Erro ao tentar salvar Lista'})
+          });
+
+       }else{
+         return res.status(400).json({ mensagem:'Nome não Informado' });
        }
     }
 };

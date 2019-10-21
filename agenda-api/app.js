@@ -8,13 +8,13 @@ const rotasContatos= require('./routes/Contatos');
 
 const app = express();
 
-app.use(logger('dev'));
+app.use(logger('dev')); // moded desenvolvimento DEV
 
 
-app.use(cors());
+app.use(cors()); // para liberar o acesso 
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // recebe o post 
 
 
 app.use('/contatos',rotasContatos);

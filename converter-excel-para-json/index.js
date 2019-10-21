@@ -1,10 +1,14 @@
 const excelToJson = require('convert-excel-to-json');
 
 let json = excelToJson({
-    sourceFile: 'lista.xlsx', //lista.xlsx arquivo do Excel  
+    sourceFile: 'filmes.xlsx', //lista.xlsx arquivo do Excel  
     columnToKey:{
-        A:'unidade',
-        B:'descricao'
+        A:'titulo',
+        B:'ano',
+        C:'direcao',
+        D:'sinopse',
+        E:'nota',
+        F:'genero'
     }
 });
 json = json['Página1'].slice(1,json.length)

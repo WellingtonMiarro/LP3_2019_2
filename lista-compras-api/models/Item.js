@@ -3,7 +3,7 @@ const {Schema, model} = require('mongoose');
 const esquema = new Schema({
     descricao: {
         type: String,
-        required: true
+        required: true //obrigatorio 
     },
     unidade:{
         type: String,
@@ -11,6 +11,6 @@ const esquema = new Schema({
     }
 });
 
-const Item = model('Item', esquema);
+const Item = model('Item', esquema); //sempre vai ser com a letra maiuscula e no singular
 
 module.exports = Item;

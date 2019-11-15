@@ -22,6 +22,6 @@ router.post('/',listaCtrl.salvar);
 
 //Rota para o serviço /lista/itens
 //verbo HHTP: Get
-//router.get('/itens', listaCtrl.recuperarItensPorDescricao);
+router.get('/itens', listaCtrl.recuperarItens);
 
 module.exports = router;

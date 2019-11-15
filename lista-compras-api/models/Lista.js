@@ -13,6 +13,6 @@ const esquema = new Schema({
     ]
 });
 
-const Lista = model('Item', esquema);
+const Lista = model('Lista', esquema);
 
 module.exports = Lista;

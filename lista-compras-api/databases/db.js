@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb://localhost/lista-compras-dev';
+const dbURI = 'mongodb://localhost/lista-compras-dev'; //basicamente so mudar o nome do banco 
 
 mongoose
     .connect(dbURI, {useNewUrlParser:true})

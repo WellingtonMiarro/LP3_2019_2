@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const rotasListas = require('./routes/listas');
-require('./databases/db');
+require('./databases/db'); //Importante para conectar com o banco de dados
 
 const app = express();
 

@@ -12,13 +12,24 @@ const router = express.Router();
 
 
 //Rota para o servico: /lista verbo HTTP: GET
-//router.get('/', listaCtrl.recuperarTodas);
+router.get('/', listaCtrl.recuperaListas);
 /**
  * ROTA para o serviço:/lista se o verbo é diferente nao acontece conflito 
  * Verbo HTTP: POST
  * metodo post para MANDAR
  */
 router.post('/',listaCtrl.salvar);
+
+/* Rota para os serviços: /listas/:id 
+Verbo HTTP: PUT
+*/ 
+router.put('/:id', listaCtrl.atualizar);
+
+/*
+    Rota para o serviço /listas/:id 
+    verbo HTTP; DELETE
+*/ 
+router.delete('/:id', listaCtrl.remover);
 
 //Rota para o serviço /lista/itens
 //verbo HHTP: Get

@@ -4,6 +4,12 @@ const Item = require('../models/Item');
 
 const controller = {
 
+   recuperaListas: async(req, res) => {
+      const listas = await Lista.find();
+      return res.json(listas);
+
+   },
+
 
    recuperarItens: async (req, res)=>{//assincrona  //operacoes de leitura  nao perde os dados
       const { consulta } = req.body;
@@ -47,7 +53,7 @@ const controller = {
 
             //se encontrou a lista e a atualizou .....
             if(listaAtualizada){
-               res.json(listaAtualizada)
+               res.json({mensagem: "Lista Atualizada"})
             }else{
                res.status(404).json({ mensagem: "Lista não encontrada"})
             }
@@ -56,7 +62,26 @@ const controller = {
             console.log(erro);
             res.status(500).json({mensagem: 'Erro ao tentar atualizar a lista'})
          }); 
+    },
+    remover: (req, res) => {
+       const { id } = req.params;
+
+       Lista
+       .findByIdAndRemove( id )
+       .exec()
+       .then( 
+         () => res.status(204).end(),
+         erro => {
+            console.log(erro)
+         }
+         )
+       .catch(erro => {
+          console.log(erro);
+          res.status(500).json({mensagem: 'Erro ao tentar remover a lista'})
+       });
+
     }
+
 };
 
 module.exports = controller;

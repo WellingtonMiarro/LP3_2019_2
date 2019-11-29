@@ -3,7 +3,8 @@ const {Schema, model} = require('mongoose');
 const esquema = new Schema({
     descricao: {
         type: String,
-        required: true //obrigatorio 
+        required: true,//obrigatorio 
+        unique: true
     },
     unidade:{
         type: String,

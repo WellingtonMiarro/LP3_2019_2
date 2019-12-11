@@ -34,5 +34,6 @@ router.delete('/:id', listaCtrl.remover);
 //Rota para o serviço /lista/itens
 //verbo HHTP: Get
 router.get('/itens', listaCtrl.recuperarItens);
+router.get('/descricao', listaCtrl.recuperaPorDescricao);
 
 module.exports = router;

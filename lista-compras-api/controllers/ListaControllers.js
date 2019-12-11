@@ -9,7 +9,13 @@ const controller = {
       return res.json(listas);
 
    },
+   recuperaPorDescricao: async(req, res) => {
+      const { consulta } = req.body;
+      let itens = await Item.find({
+         descricao: {'$regex':consulta, '$options':'i'}},'descricao');
+      return res.json(itens);
 
+   },
 
    recuperarItens: async (req, res)=>{//assincrona  //operacoes de leitura  nao perde os dados
       const { consulta } = req.body;
